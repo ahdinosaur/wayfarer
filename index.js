@@ -45,13 +45,13 @@ function Wayfarer (dft) {
     const node = _trie.match(route)
     if (node && node.cb) {
       args[0] = node.params
-      return node.cb.apply(null, args)
+      return node.cb.apply(this, args)
     }
 
     const dft = _trie.match(_default)
     if (dft && dft.cb) {
       args[0] = dft.params
-      return dft.cb.apply(null, args)
+      return dft.cb.apply(this, args)
     }
 
     throw new Error("route '" + route + "' did not match")
